@@ -1,14 +1,14 @@
-# 🍕 Template — Site para Pizzaria
+# Template — Site para Pizzaria
 
 Site responsivo e pronto para uso, desenvolvido com HTML e CSS puro. Sem dependências externas, fácil de personalizar e publicar.
 
-## 📸 Preview
+## Preview
 
 > Abra o arquivo `index.html` no navegador para visualizar o template.
 
 ---
 
-## 🚀 Como usar
+##  Como usar
 
 1. Faça o download ou clone este repositório
 2. Abra o arquivo `index.html` em qualquer editor de código (ex: VS Code)
@@ -16,7 +16,7 @@ Site responsivo e pronto para uso, desenvolvido com HTML e CSS puro. Sem depend�
 
 ---
 
-## ✅ Checklist de personalização
+##  Checklist de personalização
 
 ### Textos
 - [ ] Nome da pizzaria na `<nav>` (linha com `Nome da Pizzaria`)
@@ -40,7 +40,7 @@ Site responsivo e pronto para uso, desenvolvido com HTML e CSS puro. Sem depend�
 
 ---
 
-## 📁 Estrutura sugerida do projeto
+##  Estrutura sugerida do projeto
 
 ```
 pizzaria/
@@ -55,7 +55,7 @@ pizzaria/
 
 ---
 
-## 🛠️ Tecnologias
+##  Tecnologias
 
 - HTML5
 - CSS3
@@ -63,6 +63,6 @@ pizzaria/
 
 ---
 
-## 📄 Licença
+##  Licença
 
 Livre para uso pessoal e comercial. Atribuição não obrigatória, mas apreciada.
