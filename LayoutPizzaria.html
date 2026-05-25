@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pizzaria</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #1a1a1a;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* ── Navegação ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      border-bottom: 0.5px solid #e0e0e0;
+    }
+
+    .logo {
+      font-size: 1.2rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      color: #666;
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .nav-links a:hover {
+      color: #c0392b;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: #1a0a00;
+      color: #fff;
+      padding: 4rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-tag {
+      background: #c0392b;
+      color: #fff;
+      font-size: 11px;
+      padding: 4px 14px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+      color: #fff;
+      font-family: 'Playfair Display', serif;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      color: #ccc;
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn-primary {
+      background: #c0392b;
+      color: #fff;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-size: 15px;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: opacity 0.2s;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.88;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.4);
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-size: 15px;
+      cursor: pointer;
+      margin-left: 12px;
+      font-family: 'Inter', sans-serif;
+      transition: border-color 0.2s;
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(255,255,255,0.8);
+    }
+
+    /* ── Barra de info ── */
+    .info-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      padding: 1.5rem 2rem;
+      background: #f9f9f9;
+      border-bottom: 0.5px solid #e0e0e0;
+    }
+
+    .info-item {
+      text-align: center;
+    }
+
+    .info-label {
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    .info-sub {
+      font-size: 12px;
+      color: #888;
+    }
+
+    /* ── Seção cardápio ── */
+    .section {
+      padding: 2rem;
+      flex: 1;
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin-bottom: 0.3rem;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .section-sub {
+      color: #888;
+      font-size: 14px;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── Cards de pizza ── */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+    }
+
+    .pizza-card {
+      background: #fff;
+      border: 0.5px solid #e0e0e0;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    /* 
+      ADICIONAR IMAGEM:
+      Substitua o bloco .pizza-img abaixo pela sua imagem real.
+      Exemplo: <div class="pizza-img" style="background-image: url('imagens/margherita.jpg')"></div>
+    */
+    .pizza-img {
+      width: 100%;
+      height: 160px;
+      background-color: #fff8f0;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .pizza-info {
+      padding: 12px;
+    }
+
+    .pizza-name {
+      font-weight: 500;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .pizza-desc {
+      font-size: 12px;
+      color: #888;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+
+    .pizza-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .pizza-price {
+      font-weight: 500;
+      color: #c0392b;
+      font-size: 15px;
+    }
+
+    .btn-add {
+      background: #c0392b;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.2s;
+    }
+
+    .btn-add:hover {
+      opacity: 0.88;
+    }
+
+    .badge {
+      background: #fff0ef;
+      color: #c0392b;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 10px;
+      display: inline-block;
+      margin-bottom: 6px;
+    }
+
+    /* ── Rodapé ── */
+    .footer {
+      background: #1a0a00;
+      color: #aaa;
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 13px;
+      margin-top: auto;
+    }
+
+    .footer span {
+      color: #c0392b;
+    }
+
+    .divider {
+      height: 0.5px;
+      background: #e0e0e0;
+      margin: 0 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVEGAÇÃO -->
+  <!-- Substitua "Nome da Pizzaria" pelo nome do seu estabelecimento -->
+  <nav>
+    <div class="logo">Nome da Pizzaria</div>
+    <div class="nav-links">
+      <a href="#">Cardápio</a>
+      <a href="#">Promoções</a>
+      <a href="#">Contato</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <!-- Substitua os textos pelo slogan e descrição do seu negócio -->
+  <div class="hero">
+    <div class="hero-tag">Entrega em 30 min</div>
+    <h1>A pizza mais gostosa<br>da cidade</h1>
+    <p>Ingredientes frescos, massa artesanal e muito sabor</p>
+    <button class="btn-primary">Ver cardápio</button>
+    <button class="btn-secondary">Fazer pedido</button>
+  </div>
+
+  <!-- BARRA DE INFORMAÇÕES -->
+  <!-- Ajuste os dados conforme a pizzaria -->
+  <div class="info-bar">
+    <div class="info-item">
+      <div class="info-label">30–45 min</div>
+      <div class="info-sub">Tempo de entrega</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">4.9 / 5.0</div>
+      <div class="info-sub">Avaliação dos clientes</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">Grátis</div>
+      <div class="info-sub">Frete acima de R$60</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- CARDÁPIO -->
+  <!-- Para cada pizza: troque nome, descrição, preço e badge -->
+  <!-- Para adicionar imagem: coloque style="background-image: url('sua-imagem.jpg')" na div.pizza-img -->
+  <div class="section">
+    <div class="section-title">Nossas pizzas</div>
+    <div class="section-sub">Escolha a sua favorita — todas com bordas recheadas</div>
+    <div class="menu-grid">
+
+      <div class="pizza-card">
+        <div class="pizza-img" style="background-image: url('');"></div>
+        <div class="pizza-info">
+          <div class="badge">Mais pedida</div>
+          <div class="pizza-name">Margherita</div>
+          <div class="pizza-desc">Molho de tomate, mussarela e manjericão fresco</div>
+          <div class="pizza-footer">
+            <span class="pizza-price">R$ 49,90</span>
+            <button class="btn-add" aria-label="Adicionar Margherita">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="pizza-card">
+        <div class="pizza-img" style="background-image: url('');"></div>
+        <div class="pizza-info">
+          <div class="badge">Novo</div>
+          <div class="pizza-name">Carne Seca</div>
+          <div class="pizza-desc">Carne seca desfiada, catupiry e cebola caramelizada</div>
+          <div class="pizza-footer">
+            <span class="pizza-price">R$ 64,90</span>
+            <button class="btn-add" aria-label="Adicionar Carne Seca">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="pizza-card">
+        <div class="pizza-img" style="background-image: url('');"></div>
+        <div class="pizza-info">
+          <div class="pizza-name">Frango c/ Requeijão</div>
+          <div class="pizza-desc">Frango desfiado, requeijão cremoso e milho verde</div>
+          <div class="pizza-footer">
+            <span class="pizza-price">R$ 54,90</span>
+            <button class="btn-add" aria-label="Adicionar Frango">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="pizza-card">
+        <div class="pizza-img" style="background-image: url('');"></div>
+        <div class="pizza-info">
+          <div class="badge">Sobremesa</div>
+          <div class="pizza-name">Chocolate</div>
+          <div class="pizza-desc">Nutella, morango e leite condensado</div>
+          <div class="pizza-footer">
+            <span class="pizza-price">R$ 52,90</span>
+            <button class="btn-add" aria-label="Adicionar Chocolate">+</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- RODAPÉ -->
+  <!-- Substitua endereço, telefone e horários -->
+  <div class="footer">
+    <p>📍 Rua Xxxx, x-xxx — Centro &nbsp;|&nbsp; <span>(xx) xxxxx-xxxx</span></p>
+    <p style="margin-top:6px">Seg–Sex: 18h–23h &nbsp;|&nbsp; Sáb–Dom: 17h–00h</p>
+  </div>
+
+</body>
+</html>
